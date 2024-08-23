@@ -12,7 +12,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 export default function Home() {
 
-  const sentence = "Experience Business Innovation & Accounting with Akauntme";
+  const sentence = "Experience Business Innovation with Akauntme";
   const words = sentence.split(" ");
   const context = useContext(GradientContext);
   if (!context) {
@@ -80,9 +80,9 @@ export default function Home() {
       <HeaderWidget />
 
 
-      <div className='absolute -bottom-5 lg:bottom-[-50px] -left-10 lg:left-[-50px] bg-opacity-10 h-auto w-auto'>
+      {/* <div className='absolute -bottom-5 lg:bottom-[-50px] -left-10 lg:left-[-50px] bg-opacity-10 h-auto w-auto'>
         <LogoIcon className="size-40 lg:size-[400px] fill-white" type='alone' />
-      </div>
+      </div> */}
 
       <section className=" text-white py-10 flex flex-col justify-center items-center mx-10 lg:mx-5">
 
@@ -112,9 +112,9 @@ export default function Home() {
           </p>
 
           <div className="flex justify-center">
-            <input type="email" placeholder="Enter your email or Whatsapp number" className="w-full outline-none ring-0 border-none max-w-xs p-4 rounded-l-lg text-black focus:outline-none" />
+            <input type="email" placeholder="Enter your email or Whatsapp number" className="w-full outline-none ring-0 border-none max-w-xs p-1 md:p-4 rounded-l-lg text-black focus:outline-none" />
             <button
-              className={`text-white font-semibold px-6 py-4 rounded-r-lg relative hover:scale-[1.1] transition
+              className={`text-white font-semibold px-6 py-3 md:py-4 rounded-r-lg relative hover:scale-[1.1] transition
                 focus:outline-none ${gradients[activeWord % gradients.length]}`}>
               Join
               <svg className='size-4 absolute top-1 left-3' xmlns="http://www.w3.org/2000/svg" width="15" height="36" viewBox="0 0 12 16" fill="none" aria-hidden="true">
