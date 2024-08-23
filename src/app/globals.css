@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,html,body {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+@layer utilities {
+.text-balance {
+text-wrap: balance;
+}
+}
+
+
+.mySwiper {
+width: 100%;
+height: 100%;
+}
+
+span.swiper-pagination-bullet {
+width: 5px;
+height: 5px;
+border-radius: 9999px;
+opacity: 1;
+border: 2px solid transparent;
+background-color: rgba(255,255,255,0.7);
+transition: background 0.3s, transform 0.3s;
+will-change: width;
+}
+
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+width: 15px;
+height: 5px;
+border-radius: 100px;
+background: #fff;
+border-color: #fff;
+}
+
+.swiper-pagination-bullet:hover,
+.swiper-pagination-bullet-active {
+background: #fff;
+border-color: #fff;
+transform: scale(1.2);
+}
+
