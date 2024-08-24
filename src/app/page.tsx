@@ -23,6 +23,20 @@ export default function Home() {
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
   const [contextMenuPosition, setContextMenuPosition] = useState({ x: 0, y: 0 });
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [isFooterHidden, setFooterHidden] = useState(false);
+
+
+  const handleFocus = () => {
+    if (window.innerWidth <= 768) {
+      setFooterHidden(true);
+    }
+  };
+
+  const handleBlur = () => {
+    if (window.innerWidth <= 768) {
+      setFooterHidden(false);
+    }
+  };
 
   const contextMenuItems = [
     {
@@ -80,9 +94,9 @@ export default function Home() {
       <HeaderWidget />
 
 
-      {/* <div className='absolute -bottom-5 lg:bottom-[-50px] -left-10 lg:left-[-50px] bg-opacity-10 h-auto w-auto'>
+      <div className='hidden lg:block absolute -bottom-5 lg:bottom-[-50px] -left-10 lg:left-[-50px] bg-opacity-10 h-auto w-auto'>
         <LogoIcon className="size-40 lg:size-[400px] fill-white" type='alone' />
-      </div> */}
+      </div>
 
       <section className=" text-white py-10 flex flex-col justify-center items-center mx-10 lg:mx-5">
 
@@ -112,9 +126,12 @@ export default function Home() {
           </p>
 
           <div className="flex justify-center">
-            <input type="email" placeholder="Enter your email or Whatsapp number" className="w-full outline-none ring-0 border-none max-w-xs p-1 md:p-4 rounded-l-lg text-black focus:outline-none" />
+            <input type="email" placeholder="Enter your email or Whatsapp number"
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              className="w-full text-xs md:text-sm lg:text-base outline-none px-2 ring-0 border-none max-w-xs py-1 md:p-4 rounded-l-lg text-black focus:outline-none" />
             <button
-              className={`text-white font-semibold px-6 py-3 md:py-4 rounded-r-lg relative hover:scale-[1.1] transition
+              className={`text-white text-xs md:text-sm lg:text-base font-semibold px-6 py-3 md:py-4 rounded-r-lg relative hover:scale-[1.1] transition
                 focus:outline-none ${gradients[activeWord % gradients.length]}`}>
               Join
               <svg className='size-4 absolute top-1 left-3' xmlns="http://www.w3.org/2000/svg" width="15" height="36" viewBox="0 0 12 16" fill="none" aria-hidden="true">
@@ -127,7 +144,8 @@ export default function Home() {
 
 
         </div>
-        <div className="w-full absolute bottom-4 lg:bottom-[100px] gap-y-2 justify-center items-center">
+        <div className={` ${isFooterHidden ? 'opacity-0 invisible' : 'opacity-100 visible'}}
+         w-full absolute bottom-4 lg:bottom-[100px] gap-y-2 justify-center items-center `}>
 
           <Swiper
             spaceBetween={5}
@@ -235,7 +253,7 @@ export default function Home() {
             <SwiperSlide>
 
               <div className='w-full flex justify-center text-center items-center h-[20vh]'>
-                <button className='text-xs sm:text-sm font-semibold md:text-base outline-none flex gap-x-2 items-center  bg-pink-500/20 rounded-full py-1 cursor-pointer hover:bg-pink-500/25 transition-all px-4 border border-pink-500 text-pink-400'>
+                <button className='text-xs  sm:text-sm font-semibold md:text-base outline-none flex gap-x-2 items-center  bg-pink-500/20 rounded-full py-1 cursor-pointer hover:bg-pink-500/25 transition-all px-4 border border-pink-500 text-pink-400'>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="size-[1rem] fill-pink-500">
                     <path d="M3.4667969 3.9863281 A 1.50015 1.50015 0 0 0 2.5625 6.671875L7.5625 10.671875 A 1.5007322 1.5007322 0 1 0 9.4375 8.328125L4.4375 4.328125 A 1.50015 1.50015 0 0 0 3.4667969 3.9863281 z M 44.488281 3.9863281 A 1.50015 1.50015 0 0 0 43.5625 4.328125L38.5625 8.328125 A 1.5007322 1.5007322 0 1 0 40.4375 10.671875L45.4375 6.671875 A 1.50015 1.50015 0 0 0 44.488281 3.9863281 z M 24 4C15.733378 4 9 10.733378 9 19L9 27.185547L6.2382812 33.498047C5.5384109 35.098789 6.7819446 37 8.5292969 37L18 37C18 40.295865 20.704135 43 24 43C27.295865 43 30 40.295865 30 37L39.470703 37C41.218055 37 42.461589 35.098789 41.761719 33.498047L39 27.185547L39 19C39 10.733378 32.266622 4 24 4 z M 24 7C30.645378 7 36 12.354622 36 19L36 27.5 A 1.50015 1.50015 0 0 0 36.125 28.101562L38.707031 34L24 34L9.2929688 34L11.875 28.101562 A 1.50015 1.50015 0 0 0 12 27.5L12 19C12 12.354622 17.354622 7 24 7 z M 1.5 16 A 1.50015 1.50015 0 1 0 1.5 19L5.5 19 A 1.50015 1.50015 0 1 0 5.5 16L1.5 16 z M 42.5 16 A 1.50015 1.50015 0 1 0 42.5 19L46.5 19 A 1.50015 1.50015 0 1 0 46.5 16L42.5 16 z M 21 37L24 37L27 37C27 38.674135 25.674135 40 24 40C22.325865 40 21 38.674135 21 37 z" />
                   </svg>
